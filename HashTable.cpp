@@ -19,3 +19,13 @@ using namespace std;
 
     }
 
+    bool HashTable::remove(std::string key) {
+
+    }
+
+    bool HashTable::contains(const std::string& key) const{
+
+    }
+
+
+
