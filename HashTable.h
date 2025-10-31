@@ -5,6 +5,26 @@
 #include <ostream>
 #include <string>
 #include <vector>
+
+using namespace::std;
+class HashTableBucket {
+
+ public:
+    string key;
+    int value;
+    string type;
+
+    HashTableBucket();
+
+    HashTableBucket(std::string key, int value);
+
+    void load(std::string key, int value);
+
+    bool isEmpty() const;
+
+    ostream& operator<<(ostream& os, const HashTableBucket& bucket);
+};
+
 class HashTable {
 
     public:
@@ -28,10 +48,11 @@ class HashTable {
 
     size_t size() const;
 
-private:
-
-
     friend std::ostream& operator<<(std::ostream& os, const HashTable& hashTable);
+
+
+
+
 
 
 
