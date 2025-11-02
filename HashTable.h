@@ -22,7 +22,7 @@ class HashTableBucket {
 
     bool isEmpty() const;
 
-    ostream& operator<<(ostream& os, const HashTableBucket& bucket);
+    friend ostream& operator<<(ostream& os, const HashTableBucket& bucket);
 };
 
 class HashTable {

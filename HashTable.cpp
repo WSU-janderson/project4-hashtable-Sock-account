@@ -4,14 +4,19 @@
 #include <vector>
 #include <string>
 #include <ostream>
+#include <list>
+#include <cstring>
 #include "HashTable.h"
+
 using namespace std;
 
 
 
 
     HashTable::HashTable(size_t initCapacity) {
-
+    for (size_t i = 0; i < initCapacity; i++) {
+        HashTableBucket* bucket = new HashTableBucket;
+    }
 
 }
 
@@ -27,5 +32,26 @@ using namespace std;
 
     }
 
+    std::optional<int> HashTable::get(const std::string& key) const {
 
+    }
 
+    int& HashTable::operator[](const std::string& key) {
+
+    }
+
+    std::vector<std::string> HashTable::keys() const {
+
+    }
+
+    double HashTable::alpha() const {
+
+    }
+
+    size_t HashTable::capacity() const {
+
+    }
+
+    std::ostream& operator<<(std::ostream& os, const HashTable& hashTable) {
+
+    }
