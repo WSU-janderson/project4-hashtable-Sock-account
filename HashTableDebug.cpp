@@ -6,6 +6,7 @@
 #include <iostream>
 #include "HashTable.h"
 int main() {
-    HashTable ();
+
+    HashTable h1(5);
     return 0;
 }

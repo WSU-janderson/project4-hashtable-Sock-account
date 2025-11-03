@@ -6,6 +6,7 @@
 #include <ostream>
 #include <list>
 #include <cstring>
+#include <utility>
 #include "HashTable.h"
 
 using namespace std;
@@ -14,8 +15,11 @@ using namespace std;
 
 
     HashTable::HashTable(size_t initCapacity) {
+      vector<list<pair<string, int>>> table;
+        string empty = "";
         for (int i= 0; i < initCapacity; i++) {
-            HashTableBucket bucket ("", i);
+            table[i].push_back({empty,i});
+            HashTableBucket(table[i].back().first,table[i].back().second);
         }
 
     }
