@@ -14,13 +14,15 @@ using namespace std;
 
 
     HashTable::HashTable(size_t initCapacity) {
-    for (size_t i = 0; i < initCapacity; i++) {
-        HashTableBucket* bucket = new HashTableBucket;
+
+        for (int i= 0; i < initCapacity; i++) {
+            HashTableBucket bucket ("", i);
+
+        }
+        return;
     }
-
-}
-
     bool HashTable::insert(std::string key, size_t value) {
+
 
     }
 
@@ -54,4 +56,4 @@ using namespace std;
 
     std::ostream& operator<<(std::ostream& os, const HashTable& hashTable) {
 
-    }
+    };

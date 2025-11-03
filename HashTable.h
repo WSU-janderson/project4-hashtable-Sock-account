@@ -14,9 +14,9 @@ class HashTableBucket {
     int value;
     string type;
 
-    HashTableBucket();
 
-    HashTableBucket(std::string key, int value);
+
+    HashTableBucket(string key, int value);
 
     void load(std::string key, int value);
 
