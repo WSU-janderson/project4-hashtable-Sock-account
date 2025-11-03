@@ -14,12 +14,10 @@ using namespace std;
 
 
     HashTable::HashTable(size_t initCapacity) {
-
         for (int i= 0; i < initCapacity; i++) {
             HashTableBucket bucket ("", i);
-
         }
-        return;
+
     }
     bool HashTable::insert(std::string key, size_t value) {
 
