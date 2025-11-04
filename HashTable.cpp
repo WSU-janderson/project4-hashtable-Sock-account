@@ -112,18 +112,35 @@ using namespace std;
     }
 
     std::vector<std::string> HashTable::keys() const {
-
-        return keys.size();
+        vector<string> keys;
+        for (int i = 0; i < table.size(); i++) {
+            keys.push_back(to_string(i));
+        }
+        return keys;
     }
 
     double HashTable::alpha() const {
+    double alpha = static_cast<double>(table.size());
+        return alpha;
+
 
     }
 
     size_t HashTable::capacity() const {
-
+     return table.capacity();
+    }
+    size_t HashTable::size() const {
+        return table.size();
     }
 
     std::ostream& operator<<(std::ostream& os, const HashTable& hashTable) {
+        for(int i = 0; i < hashTable.size(); i++) {
+            if (hashTable.contains(hashTable.keys()[i] = true)) {
+                os << "<";
+                os << hashTable.keys()[i] << endl;
+                os << ">";
+            }
 
+        }
+        return os;
     };
