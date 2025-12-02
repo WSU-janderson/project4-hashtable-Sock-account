@@ -5,7 +5,7 @@
 #include <ostream>
 #include <string>
 #include <vector>
-
+#include <Map>
 using namespace::std;
 class HashTableBucket {
 
@@ -15,6 +15,7 @@ class HashTableBucket {
     string type;
 
 
+    HashTableBucket();
 
     HashTableBucket(string key, int value) {
         this->key = key;
@@ -31,6 +32,10 @@ class HashTableBucket {
 class HashTable {
 
     public:
+
+    size_t initCapacity;
+    vector<HashTableBucket> buckets;
+
     HashTable(size_t initCapacity = 8);
 
     bool insert(std::string key, size_t value);

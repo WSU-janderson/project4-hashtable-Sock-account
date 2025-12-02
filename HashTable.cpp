@@ -9,7 +9,7 @@
 #include <utility>
 #include <algorithm>
 #include "HashTable.h"
-
+#include <list>
 #include <iostream>
 #include <map>
 
@@ -19,10 +19,30 @@ using namespace std;
 
 
         HashTable::HashTable(size_t initCapacity) {
+        if (initCapacity != 8) {
+           for (int i = 0; i < initCapacity; i++) {
+               HashTableBucket bucket;
+               buckets.push_back(bucket);
+           }
+            return;
+        }else{
+            for (size_t i = 0; i < 8; i++) {
+                HashTableBucket bucket = HashTableBucket();
+                buckets.push_back(bucket);
+            }
+            return;
+        }
 
     }
         bool HashTable::insert(std::string key, size_t value) {
+        HashTableBucket bucket(key, value);
+            int Hash = 0;
 
+            /*if ( > initCapacity) {
+            return false;
+        }while() {
+
+        }*/
 
     }
 
