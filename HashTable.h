@@ -5,7 +5,7 @@
 #include <ostream>
 #include <string>
 #include <vector>
-#include <list>
+
 using namespace::std;
 class HashTableBucket {
 
@@ -53,7 +53,7 @@ class HashTable {
 
     friend std::ostream& operator<<(std::ostream& os, const HashTable& hashTable);
 
-    vector<list<HashTableBucket>> table;
+
 
 
 
