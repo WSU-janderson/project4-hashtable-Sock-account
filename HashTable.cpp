@@ -21,14 +21,14 @@ using namespace std;
         HashTable::HashTable(size_t initCapacity) {
         if (initCapacity != 8) {
            for (int i = 0; i < initCapacity; i++) {
-               HashTableBucket bucket;
-               buckets.push_back(bucket);
+               buckets[i] = HashTableBucket(to_string(i),0);
+               //buckets.push_back(bucket);
            }
             return;
-        }else{
+        }if (initCapacity == 8){
             for (size_t i = 0; i < 8; i++) {
-                HashTableBucket bucket = HashTableBucket();
-                buckets.push_back(bucket);
+                HashTableBucket bucket = HashTableBucket(to_string(i),0);
+                //buckets.push_back(bucket);
             }
             return;
         }
