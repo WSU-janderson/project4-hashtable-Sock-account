@@ -7,6 +7,11 @@
 #include <vector>
 #include <Map>
 using namespace::std;
+enum bucket_type {
+    normal,
+    ESS,
+    EAR
+};
 class HashTableBucket {
 
  public:
@@ -15,7 +20,9 @@ class HashTableBucket {
     string type;
 
 
-    HashTableBucket();
+    HashTableBucket() {
+
+    }
 
     HashTableBucket(string key, int value) {
         this->key = key;
@@ -33,12 +40,12 @@ class HashTable {
 
     public:
 
-    size_t initCapacity;
+    //size_t initCapacity;
     vector<HashTableBucket> buckets;
-
     HashTable(size_t initCapacity = 8);
 
-    int HashString(const string & key);
+
+    int HashString(string key);
 
     int HashInt(int keycode);
 

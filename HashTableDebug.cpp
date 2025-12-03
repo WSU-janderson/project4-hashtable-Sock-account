@@ -8,6 +8,6 @@
 int main() {
 
     HashTable h1 = HashTable();
-
+    h1.insert("apple",1);
     return 0;
 }

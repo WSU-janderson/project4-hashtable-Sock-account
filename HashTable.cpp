@@ -19,19 +19,7 @@ using namespace std;
 
 
         HashTable::HashTable(size_t initCapacity) {
-        if (initCapacity != 8) {
-           for (int i = 0; i < initCapacity; i++) {
-               buckets[i] = HashTableBucket(to_string(i),0);
-               //buckets.push_back(bucket);
-           }
-            return;
-        }if (initCapacity == 8){
-            for (size_t i = 0; i < 8; i++) {
-                HashTableBucket bucket = HashTableBucket(to_string(i),0);
-                //buckets.push_back(bucket);
-            }
-            return;
-        }
+            buckets.resize(initCapacity);
 
     }
         bool HashTable::insert(std::string key, size_t value) {
@@ -43,16 +31,16 @@ using namespace std;
             if (keycode < 0) {
                 keycode = HashInt(keycode);
             }
+
             HashTableBucket bucket(to_string(keycode), value);
-
-            /*if ( > initCapacity) {
-            return false;
-        }while() {
-
-        }*/
-
+            int hashindex = keycode % buckets.size();
+            if (hashindex > buckets.size() || hashindex < 0) {
+                return false;
+            }
+            buckets[hashindex] = bucket;
+            return true;
     }
-    int HashString(string key) {
+    int HashTable::HashString(string key) {
             int hashCode = 0;
             for (char c: key) {
                 hashCode += c;
@@ -61,7 +49,7 @@ using namespace std;
 
 
 }
-    int HashInt(int key) {
+    int HashTable::HashInt(int key) {
         key = abs(key);
             return key;
         }
