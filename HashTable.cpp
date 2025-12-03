@@ -35,8 +35,15 @@ using namespace std;
 
     }
         bool HashTable::insert(std::string key, size_t value) {
-        HashTableBucket bucket(key, value);
-            int Hash = 0;
+
+            //int Hash = 0;
+            int keycode = HashString(key);
+
+
+            if (keycode < 0) {
+                keycode = HashInt(keycode);
+            }
+            HashTableBucket bucket(to_string(keycode), value);
 
             /*if ( > initCapacity) {
             return false;
@@ -45,6 +52,20 @@ using namespace std;
         }*/
 
     }
+    int HashString(string key) {
+            int hashCode = 0;
+            for (char c: key) {
+                hashCode += c;
+            }
+            return hashCode;
+
+
+}
+    int HashInt(int key) {
+        key = abs(key);
+            return key;
+        }
+
 
         bool HashTable::remove(std::string key) {
 

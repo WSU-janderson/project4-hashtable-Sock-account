@@ -38,6 +38,10 @@ class HashTable {
 
     HashTable(size_t initCapacity = 8);
 
+    int HashString(const string & key);
+
+    int HashInt(int keycode);
+
     bool insert(std::string key, size_t value);
 
     bool remove(std::string key);
