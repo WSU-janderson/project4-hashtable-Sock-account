@@ -73,7 +73,19 @@ using namespace std;
         }
 
         bool HashTable::contains(const std::string& key) const{
+            int hashCode = 0;
+            for (char c: key) {
+                hashCode += c;
+            }
+            int bucketkey = abs(hashCode);
 
+
+            for (int i = 0; i < buckets.size(); i++) {
+            if (buckets[i].key == to_string(bucketkey)) {
+                return true;
+            }
+        }
+            return false;
         }
 
         std::optional<int> HashTable::get(const std::string& key) const {
