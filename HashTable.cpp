@@ -107,11 +107,27 @@ using namespace std;
         }
 
         int& HashTable::operator[](const std::string& key) {
-
+            int hashCode = 0;
+            for (char c: key) {
+                hashCode += c;
+            }
+            int bucketkey = abs(hashCode);
+            for (int i = 0; i < buckets.size(); i++) {
+                if (buckets[i].key == to_string(bucketkey)) {
+                    return buckets[i].value;
+                }
+            }
+            throw std::out_of_range("Key not found");
         }
 
         std::vector<std::string> HashTable::keys() const {
-
+            vector<string> keys;
+            for (int i = 0; i < buckets.size(); i++) {
+                if (buckets[i].type == "normal") {
+                    keys.push_back(buckets[i].key);
+                }
+            }
+            return keys;
         }
 
         double HashTable::alpha() const {
