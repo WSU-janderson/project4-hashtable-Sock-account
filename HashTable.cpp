@@ -20,8 +20,10 @@ using namespace std;
 
         HashTable::HashTable(size_t initCapacity) {
             buckets.resize(initCapacity);
-
-    }
+            for (int i = 0; i < buckets.size(); i++) {
+                buckets[i].type = "ESS";
+            }
+    } //TODO: Deal with collisions
         bool HashTable::insert(std::string key, size_t value) {
 
             //int Hash = 0;
@@ -38,6 +40,7 @@ using namespace std;
                 return false;
             }
             buckets[hashindex] = bucket;
+            buckets[hashindex].type = "Normal";
             return true;
     }
     int HashTable::HashString(string key) {
@@ -56,8 +59,17 @@ using namespace std;
 
 
         bool HashTable::remove(std::string key) {
-
-
+            int keycode = HashString(key);
+            keycode = HashInt(keycode);
+            for (int i = 0; i < buckets.size(); i++) {
+                if (buckets[i].key == to_string(keycode)) {
+                    buckets[i].key = "";
+                    buckets[i].value = 0;
+                    buckets[i].type = "EAR";
+                    return true;
+                }
+            }
+        return false;
         }
 
         bool HashTable::contains(const std::string& key) const{

@@ -9,5 +9,6 @@ int main() {
 
     HashTable h1 = HashTable();
     h1.insert("apple",1);
+    h1.remove("apple");
     return 0;
 }
