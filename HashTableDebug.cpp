@@ -14,6 +14,8 @@ int main() {
     bool result2 = h1.contains("orange");
     int got = h1.get("apple").value();
     cout << got << endl;
-
+    h1.insert("banana",2);
+   int got2 = h1.get("banana").value();
+    cout << got2 << endl;
     return 0;
 }

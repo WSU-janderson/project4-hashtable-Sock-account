@@ -38,9 +38,12 @@ using namespace std;
             int hashindex = keycode % buckets.size();
             if (hashindex > buckets.size() || hashindex < 0) {
                 return false;
+            } if (buckets[hashindex].type == "normal") {
+              cout << "There has been a collision" << endl;
+                return false;
             }
             buckets[hashindex] = bucket;
-            buckets[hashindex].type = "Normal";
+            buckets[hashindex].type = "normal";
             return true;
     }
     int HashTable::HashString(string key) {
@@ -89,7 +92,18 @@ using namespace std;
         }
 
         std::optional<int> HashTable::get(const std::string& key) const {
+            int hashCode = 0;
+            for (char c: key) {
+                hashCode += c;
+            }
+            int bucketkey = abs(hashCode);
 
+            for (int i = 0; i < buckets.size(); i++) {
+                if (buckets[i].key == to_string(bucketkey)) {
+                    return buckets[i].value;
+                }
+            }
+            return nullopt;
         }
 
         int& HashTable::operator[](const std::string& key) {
