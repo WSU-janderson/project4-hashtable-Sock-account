@@ -140,15 +140,26 @@ using namespace std;
             }
             load = static_cast<double>(BucketsFilled) / static_cast<double>(buckets.size()); //O(1)
             //The functions time complexity is O(1)
+
             return load;
 
         }
 
         size_t HashTable::capacity() const {
-
+            size_t capacity = 0;
+            for (int i = 0; i < buckets.size(); i++) {
+                capacity++;
+            }
+            return capacity;
         }
         size_t HashTable::size() const {
-
+        size_t size = 0;
+            for (int i = 0; i < buckets.size(); i++) {
+                if (buckets[i].type == "normal") {
+                    size++;
+                }
+            }
+            return size;
         }
 
         std::ostream& operator<<(std::ostream& os, const HashTable& hashTable) {

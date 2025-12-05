@@ -26,5 +26,7 @@ int main() {
     //int op_brackets3 = h1["orange"];
     vector<string> keys = h1.keys();
     double load = h1.alpha();
+    size_t capacity = h1.capacity();
+    size_t size = h1.size();
     return 0;
 }
