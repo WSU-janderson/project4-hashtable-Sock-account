@@ -11,6 +11,7 @@ int main() {
 
     HashTable h1 = HashTable();
     h1.insert("apple",1);
+    h1.insert("apple",1);
     //h1.remove("apple");
     bool result = h1.contains("apple");
     bool result2 = h1.contains("orange");
