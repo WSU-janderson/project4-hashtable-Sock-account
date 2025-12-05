@@ -44,6 +44,8 @@ class HashTable {
     vector<HashTableBucket> buckets;
     HashTable(size_t initCapacity = 8);
 
+    void reHash(int initCapacity);
+
     int HashString(string key) const;
 
     int HashString(string key);

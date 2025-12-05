@@ -140,11 +140,16 @@ using namespace std;
             }
             load = static_cast<double>(BucketsFilled) / static_cast<double>(buckets.size()); //O(1)
             //The functions time complexity is O(1)
-
+            //if (load >= 0.5) {
+                //int capacity = this->size();
+            //reHash(capacity);
+            //}
             return load;
 
         }
+        void HashTable::reHash(int initCapacity) {
 
+        }
         size_t HashTable::capacity() const {
             size_t capacity = 0;
             for (int i = 0; i < buckets.size(); i++) {
