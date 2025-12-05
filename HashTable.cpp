@@ -140,6 +140,7 @@ using namespace std;
             }
             load = static_cast<double>(BucketsFilled) / static_cast<double>(buckets.size()); //O(1)
             //The functions time complexity is O(1)
+            //TODO: Figure out why this isn't working
             //if (load >= 0.5) {
                 //int capacity = this->size();
             //reHash(capacity);
