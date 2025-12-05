@@ -25,5 +25,6 @@ int main() {
     int op_brackets2 = h1["banana"];
     //int op_brackets3 = h1["orange"];
     vector<string> keys = h1.keys();
+    double load = h1.alpha();
     return 0;
 }

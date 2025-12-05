@@ -131,7 +131,16 @@ using namespace std;
         }
 
         double HashTable::alpha() const {
-
+        double load = 0.0; //O(1)
+            int BucketsFilled = 0;//O(1)
+            for (int i = 0; i < buckets.size(); i++) {
+                if (buckets[i].type == "normal") {
+                    BucketsFilled++; //O(1)
+                }
+            }
+            load = static_cast<double>(BucketsFilled) / static_cast<double>(buckets.size()); //O(1)
+            //The functions time complexity is O(1)
+            return load;
 
         }
 
