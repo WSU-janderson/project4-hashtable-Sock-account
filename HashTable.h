@@ -42,9 +42,10 @@ class HashTable {
 
     //size_t initCapacity;
     vector<HashTableBucket> buckets;
+    vector<int> offset = {4, 6, 7, 3, 5, 1, 8, 2};
     HashTable(size_t initCapacity = 8);
 
-    void reHash(int initCapacity);
+    void reHash(size_t initCapacity);
 
     int HashString(string key) const;
 

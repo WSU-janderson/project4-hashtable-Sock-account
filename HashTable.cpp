@@ -23,29 +23,74 @@ using namespace std;
             for (int i = 0; i < buckets.size(); i++) {
                 buckets[i].type = "ESS";
             }
-    } //TODO: Deal with collisions
-        bool HashTable::insert(std::string key, size_t value) {
+    }
 
-            //int Hash = 0;
+
+
+            bool HashTable::insert(std::string key, size_t value) {
+
             int keycode = HashString(key);
-
-
+            double load = this->alpha();
+            bool collide = false;
+            int probe = offset[0];
+            int probeIndex = 0;
             if (keycode < 0) {
                 keycode = HashInt(keycode);
             }
 
             HashTableBucket bucket(to_string(keycode), value);
             int hashindex = keycode % buckets.size();
-            if (hashindex > buckets.size() || hashindex < 0) {
+
+            if (hashindex > buckets.size() || hashindex < 0) {//n times
                 return false;
-            } if (buckets[hashindex].type == "normal") {
-              cout << "There has been a collision" << endl;
-                return false;
+            } if (buckets[hashindex].type == "normal") { //n^2 times
+                collide = true;
+                while (collide == true) { //n^3 times
+                    hashindex = (hashindex + probe) % buckets.size();
+                    probeIndex++;
+                    if (this->contains(buckets[hashindex].key) == true) {
+                        cout << "Key " << key << " already exists" << endl;
+                        return false;
+                    }
+                    if (buckets[hashindex].type == "ESS") {
+                        buckets[hashindex] = bucket;
+                        buckets[hashindex].type = "normal";
+                        return true;
+                    }if (buckets[hashindex].type == "normal") {
+                        probe = offset[probeIndex];
+                        hashindex = (hashindex + probe) % buckets.size();
+                    }if (buckets[hashindex].type == "normal" && buckets[hashindex].key == to_string(keycode)) {
+                        cout << "duplicate key " << key << endl;
+                        return false;
+                    }if (probeIndex == offset.size()) {
+                        return false;
+                    }
+                }
             }
             buckets[hashindex] = bucket;
             buckets[hashindex].type = "normal";
+            if (load >= 0.5) {
+                size_t morph = buckets.size() * 2;
+                this->reHash(morph);
+
+            }
             return true;
     }
+        void HashTable::reHash(size_t initCapacity) {
+            buckets.resize(initCapacity);
+            offset.resize(initCapacity);
+            //this sets offsetprobe to equal what initCapacity was before the function call
+            int offsetprobe = initCapacity / 2;
+            //this prevents infinite loops
+            int cloneprobe = offsetprobe;
+            for (int i = 0; i < offsetprobe; i++) {
+                offset[cloneprobe++] = offset[cloneprobe] + 1;
+                cloneprobe++;
+            }
+
+        }
+
+
     int HashTable::HashString(string key) {
             int hashCode = 0;
             for (char c: key) {
@@ -140,17 +185,12 @@ using namespace std;
             }
             load = static_cast<double>(BucketsFilled) / static_cast<double>(buckets.size()); //O(1)
             //The functions time complexity is O(1)
-            //TODO: Figure out why this isn't working
-            //if (load >= 0.5) {
-                //int capacity = this->size();
-            //reHash(capacity);
-            //}
+
+
             return load;
 
         }
-        void HashTable::reHash(int initCapacity) {
 
-        }
         size_t HashTable::capacity() const {
             size_t capacity = 0;
             for (int i = 0; i < buckets.size(); i++) {

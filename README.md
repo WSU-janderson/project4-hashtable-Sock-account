@@ -5,4 +5,19 @@ Project description can be found [in the repo](Project4_HashTable.pdf)
 
 Place your complexity analysis below.
 
+
 ---
+insert time complexity analysis
+Insert runs at a time complexity of O(n)
+
+remove time complexity analysis
+Remove runs at a time complexity of O(n)
+
+contains time complexity analysis
+contains runs at a time of O(n)
+
+get time complexity analysis
+get runs at a time of O(n)
+
+operator[] time complexity analysis
+operator[] runs at a time of O(n)
